@@ -4,9 +4,9 @@ React app created with vite.
 
 
 # # Run project for dev with
-´docker compose up --build´
+`docker compose up --build`
 and frontend with 
-´cd frontend && npm run dev´
+`cd frontend && npm run dev`
 
 # # Run test with
 docker compose -f docker-compose.test.yml up --build --abort-on-container-exit
