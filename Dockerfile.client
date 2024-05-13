@@ -1,0 +1,20 @@
+# This Dockerfile builds the React front end for nginx.
+# It also proxies /api requests to api:5000
+
+# Build step #1: build the React front end
+FROM node:18-alpine as build-step
+WORKDIR /app
+ENV PATH /app/node_modules/.bin:$PATH
+COPY ./frontend/package.json ./frontend/package-lock.json ./frontend/tsconfig.json ./
+COPY ./frontend/.env ./  
+COPY ./frontend/src ./src
+COPY ./frontend/public ./public
+RUN npm install
+RUN npm run build
+
+# Build step #2: build an nginx container
+FROM nginx:latest
+COPY --from=build-step /app/build /usr/share/nginx/html
+COPY deployment/nginx.default.conf /etc/nginx/conf.d/default.conf
+COPY deployment/kinetblue.com.pem /var/www/ssl/kinetblue.com.pem
+COPY deployment/kinetblue.com.key /var/www/ssl/kinetblue.com.key
