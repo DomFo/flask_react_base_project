@@ -37,8 +37,8 @@ const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
 
 
-    const handleLogin = async (email: string, password: string, remember_me: boolean) => {
-        const user = await apiLogin(email, password, remember_me);
+    const handleLogin = async (username: string, password: string, remember_me: boolean) => {
+        const user = await apiLogin(username, password, remember_me);
         queryClient.setQueryData('userSession', user);
         console.log('logged in as', user);
     };

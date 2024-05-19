@@ -84,7 +84,16 @@ const CustomAppBar: React.FC = () => {
             sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}>
             <Box sx={{ padding: '0px 16px' }}>
                 <Toolbar disableGutters sx={{ display: "flex", justifyContent: "space-between" }}>
-                    <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'flex' }, justifyContent: 'flex-start', gap: '12px' }} >
+                    <Box
+                        onClick={() => { navigate('/'); }}
+                        sx={{
+                            flexGrow: 1,
+                            display: { xs: 'flex', md: 'flex' },
+                            justifyContent: 'flex-start',
+                            gap: '12px',
+                            cursor: 'pointer'
+                        }}
+                    >
                         <Box
                             component="img"
                             sx={{
@@ -99,8 +108,7 @@ const CustomAppBar: React.FC = () => {
                         <Typography
                             variant="h5"
                             noWrap
-                            component="a"
-                            href="/"
+                            component="div"
                             sx={{
                                 mr: 2,
                                 display: { xs: 'flex', md: 'flex' },
@@ -131,7 +139,7 @@ const CustomAppBar: React.FC = () => {
                         <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'flex', justifyContent: 'flex-end' } }}>
                             <Button
                                 variant="contained"
-                                color="success"
+                                color="secondary"
                                 key="login"
                                 onClick={() => {
                                     navigate('/login');

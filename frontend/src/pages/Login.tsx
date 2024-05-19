@@ -1,15 +1,33 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { CenteredContent } from '../components/ContentLayouts';
+import LoginForm from '../components/LoginForm';
 
-const HomePage = CenteredContent;
+import { AuthContext } from '../context/AuthContext';
 
-const Home: React.FC = () => {
+const LoginPage = CenteredContent;
+
+interface OriginState {
+    from: { pathname: string };
+}
+
+const Login: React.FC = () => {
+    const location = useLocation();
+    const navigate = useNavigate();
+    const authContext = useContext(AuthContext);
+    const origin = (location.state as OriginState)?.from?.pathname || '/';
+
+    const handleLogin = async (username: string, password: string, remember_me: boolean) => {
+        if (authContext === null) throw new Error('AuthContext is null');
+        await authContext.onLogin(username, password, remember_me);
+        navigate(origin);
+    };
+
     return (
-        <HomePage>
-            <h1>Login</h1>
-            <p>Under construction</p>
-        </HomePage>
+        <LoginPage>
+            <LoginForm handleLogin={handleLogin} />
+        </LoginPage >
     );
 };
 
-export default Home;
+export default Login;
