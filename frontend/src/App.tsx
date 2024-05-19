@@ -1,4 +1,3 @@
-import { ThemeProvider } from '@mui/material/styles';
 
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
@@ -9,7 +8,7 @@ import Login from './pages/Login';
 import NotFoundPage from './pages/NotFoundPage';
 
 
-import customTheme from './theme';
+import { ThemeProvider } from './context/ThemeContext';
 import AuthProvider from './context/AuthContext';
 
 
@@ -19,7 +18,7 @@ const queryClient = new QueryClient();
 
 const App = () => {
   return (
-    <ThemeProvider theme={customTheme}>
+    <ThemeProvider>
       <QueryClientProvider client={queryClient}>
         <AuthProvider>
           <BrowserRouter>

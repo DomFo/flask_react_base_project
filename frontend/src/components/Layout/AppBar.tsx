@@ -13,6 +13,9 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 
 import { AuthContext } from '../../context/AuthContext';
+import { useTheme } from '../../context/ThemeContext';
+import { Switch } from '@mui/material';
+
 
 interface AppBarElement {
     title: string;
@@ -23,6 +26,8 @@ interface AppBarElement {
 const CustomAppBar: React.FC = () => {
 
     const { user, onLogout } = useContext(AuthContext) ?? {};
+    const { toggleTheme, mode } = useTheme() ?? {};
+
 
 
     const navigate = useNavigate();
@@ -134,66 +139,74 @@ const CustomAppBar: React.FC = () => {
                                 </Button>
                             ))}
                         </Box> : null}
-
-                    {!user ?
-                        <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'flex', justifyContent: 'flex-end' } }}>
-                            <Button
-                                variant="contained"
-                                color="secondary"
-                                key="login"
-                                onClick={() => {
-                                    navigate('/login');
-                                }}>
-                                Login
-                            </Button>
-                        </Box>
-                        : <Box sx={{ flexGrow: 1, gap: 2, display: { xs: 'flex', md: 'flex', justifyContent: 'flex-end', alignItems: 'center' } }}>
-                            <Box sx={{ verticalAlign: 'center' }}>
-                                <Typography style={{ fontWeight: 600, textAlign: 'right', verticalAlign: 'top' }}>
-                                    Logged in as:
-                                </Typography>
-                                <Box sx={{ display: 'flex', flexDirection: 'row', gap: 1 }}>
-                                    <Typography style={{ fontWeight: 400, fontSize: '0.8em', textAlign: 'left', verticalAlign: 'center' }}>
-                                        {user.username}
-                                    </Typography>
-                                </Box>
+                    {
+                        !user ?
+                            <Box sx={{
+                                flexGrow: 1,
+                                gap: 2,
+                                display: { xs: 'flex', md: 'flex', justifyContent: 'flex-end' }
+                            }}>
+                                <Switch
+                                    checked={mode === 'dark'}
+                                    onChange={toggleTheme}
+                                    inputProps={{ 'aria-label': 'controlled' }} />
+                                <Button
+                                    variant="contained"
+                                    color="secondary"
+                                    key="login"
+                                    onClick={() => {
+                                        navigate('/login');
+                                    }}>
+                                    Login
+                                </Button>
                             </Box>
-
-
-
-                            <Tooltip title="Open settings">
-                                <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', gap: 0.5, cursor: 'pointer' }}
-                                    onClick={(e) => { handleOpenUserMenu(e) }}>
-                                    <IconButton sx={{ p: 0 }}>
-                                        <Avatar />
-                                    </IconButton>
-                                    <KeyboardArrowDownIcon />
+                            : <Box sx={{ flexGrow: 1, gap: 2, display: { xs: 'flex', md: 'flex', justifyContent: 'flex-end', alignItems: 'center' } }}>
+                                <Box sx={{ verticalAlign: 'center' }}>
+                                    <Typography style={{ fontWeight: 600, textAlign: 'right', verticalAlign: 'top' }}>
+                                        Logged in as:
+                                    </Typography>
+                                    <Box sx={{ display: 'flex', flexDirection: 'row', gap: 1 }}>
+                                        <Typography style={{ fontWeight: 400, fontSize: '0.8em', textAlign: 'left', verticalAlign: 'center' }}>
+                                            {user.username}
+                                        </Typography>
+                                    </Box>
                                 </Box>
-                            </Tooltip>
 
-                            <Menu
-                                sx={{ mt: '45px' }}
-                                id="menu-appbar"
-                                anchorEl={anchorElUser}
-                                anchorOrigin={{
-                                    vertical: 'top',
-                                    horizontal: 'right',
-                                }}
-                                keepMounted
-                                transformOrigin={{
-                                    vertical: 'top',
-                                    horizontal: 'right',
-                                }}
-                                open={Boolean(anchorElUser)}
-                                onClose={handleCloseUserMenu}
-                            >
-                                {settings.map((setting, index) => (
-                                    <MenuItem key={index} onClick={setting.callback}>
-                                        <Typography textAlign="center">{setting.title}</Typography>
-                                    </MenuItem>
-                                ))}
-                            </Menu>
-                        </Box>
+
+
+                                <Tooltip title="Open settings">
+                                    <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', gap: 0.5, cursor: 'pointer' }}
+                                        onClick={(e) => { handleOpenUserMenu(e) }}>
+                                        <IconButton sx={{ p: 0 }}>
+                                            <Avatar />
+                                        </IconButton>
+                                        <KeyboardArrowDownIcon />
+                                    </Box>
+                                </Tooltip>
+
+                                <Menu
+                                    sx={{ mt: '45px' }}
+                                    id="menu-appbar"
+                                    anchorEl={anchorElUser}
+                                    anchorOrigin={{
+                                        vertical: 'top',
+                                        horizontal: 'right',
+                                    }}
+                                    keepMounted
+                                    transformOrigin={{
+                                        vertical: 'top',
+                                        horizontal: 'right',
+                                    }}
+                                    open={Boolean(anchorElUser)}
+                                    onClose={handleCloseUserMenu}
+                                >
+                                    {settings.map((setting, index) => (
+                                        <MenuItem key={index} onClick={setting.callback}>
+                                            <Typography textAlign="center">{setting.title}</Typography>
+                                        </MenuItem>
+                                    ))}
+                                </Menu>
+                            </Box>
                     }
                 </Toolbar >
             </Box >
