@@ -1,7 +1,8 @@
-// src/context/ThemeContext.js
 import { ReactNode, createContext, useContext, useMemo, useState } from 'react';
 import { createTheme, ThemeProvider as MuiThemeProvider } from '@mui/material/styles';
 
+import lightTheme from '../themes/lightTheme';
+import darkTheme from '../themes/darkTheme';
 
 type PaletteMode = 'light' | 'dark';
 
@@ -25,11 +26,8 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
         setMode((prevMode) => (prevMode === 'light' ? 'dark' : 'light'));
     };
 
-    const theme = useMemo(() => createTheme({
-        palette: {
-            mode,
-        },
-    }), [mode]);
+    const theme = useMemo(() => (mode === 'light' ? lightTheme : darkTheme), [mode]);
+
 
     return (
         <ThemeContext.Provider value={{ mode, toggleTheme }}>
