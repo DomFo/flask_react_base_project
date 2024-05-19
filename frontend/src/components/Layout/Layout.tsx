@@ -3,7 +3,7 @@ import { Outlet } from "react-router-dom";
 import { styled } from '@mui/system';
 import { Paper } from '@mui/material';
 
-import CustomAppBar from './AppBar';
+import CustomAppBar from './AppBar/AppBar';
 import PageLoadSuspense from '../PageLoadSuspense';
 
 

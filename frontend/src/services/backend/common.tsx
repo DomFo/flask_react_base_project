@@ -10,7 +10,10 @@ export const apiGet = async (path: string) => {
         headers: {
             "Content-Type": "application/json",
         },
+        redirect: "follow",
+        credentials: "include",
     });
+    console.log(response)
     return await handleErrorResponse(response);
 };
 
@@ -21,9 +24,10 @@ export const apiPost = async (path: string, body: any) => {
         headers: {
             "Content-Type": "application/json",
         },
+        credentials: "include",
+        redirect: "follow",
         body: JSON.stringify(body),
     });
-    console.log(response)
     return await handleErrorResponse(response);
 };
 
@@ -37,6 +41,8 @@ export const apiPut = async (path: string, body: any) => {
             "Content-Type": "application/json",
         },
         body: JSON.stringify(body),
+        credentials: "include",
+        redirect: "follow",
     });
     console.log(response)
     return await handleErrorResponse(response);
@@ -49,6 +55,8 @@ export const apiDelete = async (path: string) => {
         headers: {
             "Content-Type": "application/json",
         },
+        credentials: "include",
+        redirect: "follow",
     });
     return await handleErrorResponse(response);
 };

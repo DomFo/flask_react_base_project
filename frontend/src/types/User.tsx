@@ -2,8 +2,6 @@ export interface User {
     id: number;
     username: string;
     role: UserRole;
-    isAdmin: boolean;
-    confirmed: boolean;
 }
 
 export enum UserRole {

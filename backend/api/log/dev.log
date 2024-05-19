@@ -75,3 +75,27 @@
 2024-05-13 21:40:47,652 - INFO - api.logger in user.py(Line: 108): User admin logged in. Remember me: False
 2024-05-13 21:40:47,715 - INFO - api.logger in user.py(Line: 108): User regular.user logged in. Remember me: False
 2024-05-13 21:40:47,775 - INFO - api.logger in user.py(Line: 108): User regular.user logged in. Remember me: False
+2024-05-19 22:06:27,652 - DEBUG - api.logger in app_factory.py(Line: 48): async_mode: threading
+2024-05-19 22:06:27,740 - INFO - api.logger in app_factory.py(Line: 66): # # # # # # # #
+2024-05-19 22:06:27,740 - INFO - api.logger in app_factory.py(Line: 67): App created
+2024-05-19 22:06:27,740 - INFO - api.logger in app_factory.py(Line: 68): # # # # # # # #
+2024-05-19 22:06:28,309 - DEBUG - api.logger in app_factory.py(Line: 48): async_mode: threading
+2024-05-19 22:06:28,380 - INFO - api.logger in app_factory.py(Line: 66): # # # # # # # #
+2024-05-19 22:06:28,381 - INFO - api.logger in app_factory.py(Line: 67): App created
+2024-05-19 22:06:28,381 - INFO - api.logger in app_factory.py(Line: 68): # # # # # # # #
+2024-05-19 22:06:59,473 - INFO - api.logger in user.py(Line: 108): User admin logged in. Remember me: False
+2024-05-19 22:07:10,004 - INFO - api.logger in user.py(Line: 134): User <flask_login.mixins.AnonymousUserMixin object at 0xffff937a31c0> logged out.
+2024-05-19 22:09:23,679 - INFO - api.logger in user.py(Line: 108): User admin logged in. Remember me: False
+2024-05-19 22:11:53,028 - INFO - api.logger in user.py(Line: 108): User admin logged in. Remember me: False
+2024-05-19 22:13:19,879 - INFO - api.logger in user.py(Line: 108): User admin logged in. Remember me: False
+2024-05-19 22:14:22,069 - INFO - api.logger in user.py(Line: 108): User admin logged in. Remember me: False
+2024-05-19 22:15:10,087 - INFO - api.logger in user.py(Line: 108): User admin logged in. Remember me: False
+2024-05-19 22:15:29,982 - INFO - api.logger in user.py(Line: 108): User admin logged in. Remember me: False
+2024-05-19 22:16:51,643 - INFO - api.logger in user.py(Line: 108): User admin logged in. Remember me: False
+2024-05-19 22:17:35,587 - INFO - api.logger in user.py(Line: 108): User admin logged in. Remember me: False
+2024-05-19 22:22:45,554 - INFO - api.logger in user.py(Line: 108): User admin logged in. Remember me: False
+2024-05-19 22:25:31,183 - INFO - api.logger in user.py(Line: 108): User admin logged in. Remember me: False
+2024-05-19 22:30:29,776 - INFO - api.logger in user.py(Line: 108): User admin logged in. Remember me: False
+2024-05-19 22:32:51,729 - INFO - api.logger in user.py(Line: 108): User admin logged in. Remember me: False
+2024-05-19 22:33:09,261 - INFO - api.logger in user.py(Line: 134): User <flask_login.mixins.AnonymousUserMixin object at 0xffff93802cb0> logged out.
+2024-05-19 22:33:15,188 - INFO - api.logger in user.py(Line: 108): User admin logged in. Remember me: False
