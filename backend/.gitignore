@@ -9,3 +9,7 @@ __pycache__/
 /data
 __init__.py
 ```
+
+/log
+/venv
+.env*
