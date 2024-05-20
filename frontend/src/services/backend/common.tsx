@@ -13,7 +13,6 @@ export const apiGet = async (path: string) => {
         redirect: "follow",
         credentials: "include",
     });
-    console.log(response)
     return await handleErrorResponse(response);
 };
 
@@ -47,6 +46,19 @@ export const apiPut = async (path: string, body: any) => {
     console.log(response)
     return await handleErrorResponse(response);
 };
+
+export const apiPatch = async (path: string, body: any) => {
+    const response = await fetch(`${apiMainEntryPoint}${path}`, {
+        method: "PATCH",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(body),
+        credentials: "include",
+        redirect: "follow",
+    });
+    return await handleErrorResponse(response);
+}
 
 
 export const apiDelete = async (path: string) => {

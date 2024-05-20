@@ -6,8 +6,6 @@ export interface User {
 
 export enum UserRole {
     USER = 'user',
-    ATHLETE = 'athlete',
-    RESEARCHER = 'researcher',
     ADMIN = 'admin'
 }
 

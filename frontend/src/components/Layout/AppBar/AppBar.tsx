@@ -80,7 +80,7 @@ const CustomAppBar: React.FC = () => {
 
     return (
         <AppBar
-            position="fixed" // 'absolute'| 'fixed'| 'relative'| 'static'| 'sticky'
+            position="static" // 'absolute'| 'fixed'| 'relative'| 'static'| 'sticky'
             sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}
         >
             <Box sx={{ padding: '0px 16px' }}>

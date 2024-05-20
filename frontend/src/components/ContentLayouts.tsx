@@ -9,7 +9,7 @@ const Content = styled('main', {
     shouldForwardProp: (prop) => prop !== 'centered',
 })<ContentProps>(({ centered }) => ({
     flex: 1,
-    padding: '20px',
+    padding: '12px',
     display: 'flex',
     flexDirection: 'column',
     justifyContent: centered ? 'center' : 'flex-start',
