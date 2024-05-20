@@ -1,0 +1,15 @@
+.idea/
+__pycache__/
+/venv
+/instance
+/flask_session
+/log
+*.pyc
+.DS_Store
+/data
+__init__.py
+```
+
+/log
+/venv
+.env*
