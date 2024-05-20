@@ -14,14 +14,22 @@ interface NavButtonsProps {
 const NavButtons: React.FC<NavButtonsProps> = ({ appBarElements }) => {
     const navigate = useNavigate();
     const currentRoute = useLocation().pathname;
+    console.log(currentRoute);
 
     return (
-        <Box sx={{ flexGrow: 5, display: { xs: 'flex', md: 'flex' } }}>
+        <Box sx={{
+            gap: 1,
+            flexGrow: 5,
+            display: { xs: 'flex', md: 'flex' }
+        }}>
             {appBarElements.map((page) => (
                 <Button
                     key={page.title}
-                    sx={{ backgroundColor: (currentRoute === page.route) ? '' : '#272B2F', color: 'black' }}
-                    variant="text"
+                    sx={{
+                        fontWeight: currentRoute === page.route ? 900 : 'inherit',
+                    }}
+                    variant='text'
+                    color={currentRoute === page.route ? "secondary" : "inherit"}
                     onClick={() => navigate(page.route)}
                 >
                     {page.title}

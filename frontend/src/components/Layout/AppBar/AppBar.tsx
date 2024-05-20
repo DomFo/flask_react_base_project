@@ -13,6 +13,8 @@ import LogoTitle from './LogoTitle';
 import NavButtons from './NavButtons';
 import UserMenu from './UserMenu';
 
+import { getNavs } from '../../../pages/Navs';
+
 interface AppBarElement {
     title: string;
     route: string;
@@ -21,6 +23,9 @@ interface AppBarElement {
 const CustomAppBar: React.FC = () => {
     const { user, onLogout } = useContext(AuthContext) ?? {};
     const { toggleTheme, mode } = useTheme() ?? {};
+
+    const appBarElements: AppBarElement[] = getNavs(user?.role ?? '');
+    console.log(appBarElements);
 
     const navigate = useNavigate();
 
@@ -61,7 +66,6 @@ const CustomAppBar: React.FC = () => {
         },
     ];
 
-    const appBarElements: AppBarElement[] = [];
 
     const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
 
@@ -80,24 +84,28 @@ const CustomAppBar: React.FC = () => {
             sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}
         >
             <Box sx={{ padding: '0px 16px' }}>
-                <Toolbar disableGutters sx={{ display: 'flex', justifyContent: 'space-between' }}>
+                <Toolbar disableGutters sx={{
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    gap: 12,
+                }}>
                     <LogoTitle />
                     {user ? (
                         <NavButtons appBarElements={appBarElements} />
                     ) : null}
-                    {!user ? (
-                        <Box
-                            sx={{
-                                flexGrow: 1,
-                                gap: 2,
-                                display: { xs: 'flex', md: 'flex', justifyContent: 'flex-end' },
-                            }}
-                        >
-                            <Switch
-                                checked={mode === 'dark'}
-                                onChange={toggleTheme}
-                                inputProps={{ 'aria-label': 'controlled' }}
-                            />
+
+                    <Box
+                        sx={{
+                            gap: 2,
+                            display: { xs: 'flex', md: 'flex', justifyContent: 'flex-end' },
+                        }}
+                    >
+                        <Switch
+                            checked={mode === 'dark'}
+                            onChange={toggleTheme}
+                            inputProps={{ 'aria-label': 'controlled' }}
+                        />
+                        {!user ? (
                             <Button
                                 variant="contained"
                                 color="secondary"
@@ -106,16 +114,17 @@ const CustomAppBar: React.FC = () => {
                             >
                                 Login
                             </Button>
-                        </Box>
-                    ) : (
-                        <UserMenu
-                            user={user}
-                            settings={settings}
-                            anchorElUser={anchorElUser}
-                            handleOpenUserMenu={handleOpenUserMenu}
-                            handleCloseUserMenu={handleCloseUserMenu}
-                        />
-                    )}
+                        ) : (
+                            <UserMenu
+                                user={user}
+                                settings={settings}
+                                anchorElUser={anchorElUser}
+                                handleOpenUserMenu={handleOpenUserMenu}
+                                handleCloseUserMenu={handleCloseUserMenu}
+                            />
+                        )}
+                    </Box>
+
                 </Toolbar>
             </Box>
         </AppBar>

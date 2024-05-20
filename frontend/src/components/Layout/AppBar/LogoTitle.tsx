@@ -9,7 +9,7 @@ const LogoTitle: React.FC = () => {
         <Box
             onClick={() => navigate('/')}
             sx={{
-                flexGrow: 1,
+                // flexGrow: 1,
                 display: { xs: 'flex', md: 'flex' },
                 justifyContent: 'flex-start',
                 gap: '12px',
@@ -29,7 +29,6 @@ const LogoTitle: React.FC = () => {
             />
             <Typography
                 variant="h5"
-                noWrap
                 component="div"
                 sx={{
                     mr: 2,
